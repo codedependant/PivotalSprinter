@@ -58,11 +58,6 @@ GEM
     haml_assets (0.1.0)
       haml
       tilt
-    hamlbars (1.0.0)
-      execjs (>= 1.2)
-      haml
-      sprockets
-      tilt
     happymapper (0.4.0)
       libxml-ruby (~> 2.0)
     hike (1.2.1)
@@ -166,7 +161,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   haml
   haml_assets
-  hamlbars
   hogan_assets
   jquery-rails
   pg
