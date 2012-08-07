@@ -5,6 +5,7 @@ Sprinter::Application.routes.draw do
   end
   match 'sign_in' => 'main#sign_in'
   match 'sign_user_in' => 'main#sign_user_in'
+  match 'sign_user_out' => 'main#sign_user_out'
   root :to => 'main#index'
 
   # The priority is based upon order of creation:
