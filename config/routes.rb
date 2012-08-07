@@ -3,8 +3,9 @@ Sprinter::Application.routes.draw do
   resources :project do
     resources :story
   end
-  
-  get "main/index"
+  match 'sign_in' => 'main#sign_in'
+  match 'sign_user_in' => 'main#sign_user_in'
+  root :to => 'main#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

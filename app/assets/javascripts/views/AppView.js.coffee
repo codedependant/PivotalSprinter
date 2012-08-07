@@ -16,8 +16,8 @@ class Sprinter.Views.AppView extends Backbone.View
     @collection.finish = data.finish
     @collection.number = data.number
 
-    #@collection.on("reset",@render_story_list)
-    #@collection.fetch()
+    @collection.on("reset",@render_story_list)
+    @collection.fetch()
 
   render: () ->
     console.log this.model
@@ -25,7 +25,7 @@ class Sprinter.Views.AppView extends Backbone.View
     
 
     this.$el.hide().html(html).fadeIn(300)
-    @render_story_list()
+    #@render_story_list()
     this
 
   render_story_list: () =>

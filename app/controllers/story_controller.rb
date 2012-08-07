@@ -3,7 +3,12 @@ class StoryController < ApplicationController
   before_filter :pt_sign_in
 
   def pt_sign_in
-    PivotalTracker::Client.token('shayarealg@gmail.com', 'g3mini1')  
+    begin
+      PivotalTracker::Client.connection
+    rescue PivotalTracker::Client::NoToken
+      #PivotalTracker::Client.token('shayarealg@gmail.com', 'g3mini1')  
+      session[:signed_in] = true
+    end
   end
 
   def index
