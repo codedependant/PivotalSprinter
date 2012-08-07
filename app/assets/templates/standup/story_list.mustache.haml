@@ -1,0 +1,14 @@
+%ul#user_list.nav.nav-list
+  %li.nav-header Users
+  {{#users}}
+  %li
+    %a{:href => "#"} {{.}}
+  {{/users}}   
+%br
+%br
+%ul#story_list.nav.nav-list
+  %li.nav-header Stories  
+  {{#stories}}
+  %li(data-pk-story-id= "{{id}}")
+    %a{:href => "#"} {{name}}
+  {{/stories}}
