@@ -20,6 +20,7 @@ test:
   encoding: unicode
   database: pg_development
   username: myapp
+  password: 'myapp'
   pool: 5
 
 production:
@@ -27,4 +28,5 @@ production:
   encoding: unicode
   database: pg_development
   username: myapp
+  password: 'myapp'
   pool: 5
