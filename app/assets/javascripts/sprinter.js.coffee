@@ -13,12 +13,12 @@ $(document).ready ->
 
 
   $(document).scroll ->
-    console.log "dsfsfd"
     if($(this).scrollTop() > 100)
-      $(".story").css('position','absolute')
-      $(".story").css('top',$(this).scrollTop()+40)
+      $(".story").css('top',60)
+      $(".story").css('position','fixed')
+      #$(".story").css('top',$(this).scrollTop()+40)
     else
       $(".story").css('top',100)
-      $(".story").css('position','absolute')
+      $(".story").css('position','relatve')
   
   

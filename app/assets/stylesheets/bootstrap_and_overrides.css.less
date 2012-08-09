@@ -30,23 +30,44 @@ body {
 //
 // Example:
 @linkColor: #974D4D;
+@fluidGridGutterWidth: 0%;
+@fluidGridColumnWidth: 0%;
+@gridGutterWidth: 10px;
+
+body
+{
+  background: lightgray;
+}
 .nav-list > li > a 
 {
   border-bottom: solid 1px lightGrey;
   padding: 10px;
   font-weight: bold;
-  border: 1px solid lightgrey;
+  border-bottom: 1px solid grey;
+  background: white;
 }
-.story
+.nav-list > li:last-child > a 
+{
+  border-bottom: none;
+}
+
+
+.standup_view
 {
   padding: 10px;
-  background: whitesmoke;
-  height:90%;
+  height:85%;
   width: 99%;
-  border: 1px solid lightgrey;
+  position: fixed;
+  background: white;
 }
-.story > h2
+.standup_view .stories
+{
+  width: 100%;
+}
+
+.standup_view > h2
 {
   background-color: rgba(128, 127, 127, 0.06);
   margin-bottom: 10px;
 }
+

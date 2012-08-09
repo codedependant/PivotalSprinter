@@ -4,8 +4,9 @@ class Sprinter.Views.AppView extends Backbone.View
 
 
   events: {
-    'click ul#story_list.nav-list li' : 'show_story'
-    'click ul#user_list.nav-list li' : 'filter_by_user'
+    'click ul.story_list.nav-list li:not(".nav-header"):not(".nav-header"):not(".nav-search")' : 'show_story'
+    'click ul.user_list.nav-list li:not(".nav-header"):not(".nav-search")' : 'show_user'
+    'keyup ul.story_list.nav-list li.nav-search input' : 'filter_stories'
   }
 
   initialize: () ->
@@ -22,54 +23,67 @@ class Sprinter.Views.AppView extends Backbone.View
   render: () ->
     console.log this.model
     html = @template.render()
-    
-
     this.$el.hide().html(html).fadeIn(300)
-    #@render_story_list()
     this
 
   render_story_list: () =>
     users = @collection.map((story) -> if story.get("owned_by") then story.get("owned_by") else "Unassigned" )
     users = _.uniq(users)
     
-    console.log users
     this.$(".sidebar-nav").html(HoganTemplates['standup/story_list'].render({stories: @collection.toJSON(),users:users}) )
     days = Math.floor(((new Date(@collection.finish)).getTime() - (new Date()).getTime()) / 86400000 )
-    sum = @collection.reduce( (prev,cur) -> 
-      return_obj =
-        total : prev.total + cur.get("estimate")
-        started : if cur.get("current_state") == "started" then cur.get("estimate") else 0
-        unstarted : if cur.get("current_state") == "unstarted" then cur.get("estimate") else 0
-        complete : if cur.get("current_state") == "complete" then cur.get("estimate") else 0
-    ,{total:0,started:0,unstarted:0,complete:0})
+    points = @collection.points()
 
 
     this.$(".sprintEnd").html("#{days} Days Left")
     this.$(".sprintNumber").html("Sprint number: #{@collection.number}")
-    this.$(".sprintPoints").html("#{sum.total} / #{sum.unstarted} / #{sum.complete} / #{sum.started}")
+    this.$(".sprintPoints").html("#{points.total} / #{points.unstarted} / #{points.completed} / #{points.started}")
 
   show_story: (event) =>
     event.preventDefault()
+    this.$('.story_list.nav-list li.nav-search input').val("")
+
+    
+    this.$(".story_list.nav-list li").removeClass("active")
+
     id = $(event.currentTarget).data('pk-story-id')
-    console.log id
+    this.$(".story_list.nav-list li[data-pk-story-id=#{id}]").addClass("active")
     story = @collection.get(id)
-    console.log story
-    this.$(".story").html(HoganTemplates['standup/story'].render(story.toJSON()))
+    this.$(".standup_view").html(HoganTemplates['standup/story'].render(story.toJSON()))
 
-  filter_by_user: (event) =>
+  show_user: (event) =>
+    event.preventDefault()
+    this.$('.story_list.nav-list li.nav-search input').val("")
 
-    this.$("#user_list.nav-list li").removeClass("active")
+
+    this.$(".user_list.nav-list li").removeClass("active")
     $(event.currentTarget).addClass("active")
 
     user =  $(event.currentTarget).text().trim()
     user = null if user == "Unassigned"
-
-    this.$("#story_list.nav-list li").hide()
+    users_stories = @collection.where({owned_by: user})
+    
+    this.$('.story_list.nav-list li:not(".nav-header"):not(".nav-search")').hide()
     _.each(@collection.where({owned_by: user}),(story) ->
-      this.$("#story_list.nav-list li[data-pk-story-id='#{story.id}']").show()
+      this.$(".story_list.nav-list li[data-pk-story-id='#{story.id}']").show()
     )
+    user_stories_collection = new Sprinter.Collections.Stories(users_stories)
+    points = user_stories_collection.points()
+    user_view = new Sprinter.Views.UserView({model:{name:user},collection:user_stories_collection,parentView:this})
+    user_view.render()
+
+    
 
 
-    this.$(".story").html("Clicked on user #{user}")
-
-
+  filter_stories: (event) =>
+    console.log event
+    search_text = $(event.currentTarget).val()
+    if search_text != ''
+      this.$('.story_list.nav-list li:visible:not(".nav-header"):not(".nav-search")').filter((index) ->
+        if $(this).text().toLowerCase().search(search_text) > 0
+          $(this).show() 
+        else 
+          $(this).hide()
+      )
+    else
+      this.$('.story_list.nav-list li').show()

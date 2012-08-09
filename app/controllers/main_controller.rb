@@ -3,9 +3,6 @@ class MainController < ApplicationController
 
 
   def index
-    #PivotalTracker::Client.token('shayarealg@gmail.com', 'g3mini1')  
-    #@projects = PivotalTracker::Project.all
-    #puts @projects.inspect
     if !session.has_key?('signed_in') or !session[:signed_in]
       redirect_to :action => 'sign_in'
     end
