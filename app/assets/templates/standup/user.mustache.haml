@@ -1,10 +1,11 @@
-%h1 {{name}}
-%h3 Total: {{points.total}}, Started: {{points.started}}, Unstarted: {{points.unstarted}}, Completed: {{points.completed}}
+.span12
+  %h1 {{name}}
+  %h3 Total: {{points.total}}, Started: {{points.started}}, Unstarted: {{points.unstarted}}, Completed: {{points.completed}}
 
 
-%ul.nav.nav-list.stories
-  %li.nav-header Stories  
-  {{#stories}}
-  %li(data-pk-story-id= "{{id}}")
-    %a{:href => "#"} {{name}}
-  {{/stories}}
+  %ul.nav.nav-list.stories
+    %li.nav-header Stories  
+    {{#stories}}
+    %li(data-pk-story-id= "{{id}}")
+      %a{:href => "#"} {{name}}
+    {{/stories}}

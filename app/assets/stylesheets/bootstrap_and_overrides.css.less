@@ -29,40 +29,86 @@ body {
 // See http://twitter.github.com/bootstrap/less.html for their names and documentation
 //
 // Example:
-@linkColor: #974D4D;
-@fluidGridGutterWidth: 0%;
-@fluidGridColumnWidth: 0%;
-@gridGutterWidth: 10px;
+@linkColor: #545453;
+@baseColor : #545453;
 
 body
 {
-  background: lightgray;
+  background: #545453;
 }
 .nav-list > li > a 
 {
   border-bottom: solid 1px lightGrey;
   padding: 10px;
   font-weight: bold;
-  border-bottom: 1px solid grey;
-  background: white;
 }
-.nav-list > li:last-child > a 
+
+.nav-list.story_list > li > a 
 {
   border-bottom: none;
 }
 
 
+
+.sidebar-nav
+{
+
+  .nav-list
+  {
+    background: #545453;
+    color: white;
+
+    > li.nav-search input.input
+    {
+      border-radius: 16px;
+      background: baseColor;
+      -webkit-box-shadow: 0px -4px 21px #3C3A3A inset;
+      color: white;      
+      border: darken(@baseColor,10%);
+    }
+
+    > li > a 
+    {
+      color:white;    
+    }
+
+    > li > a:hover
+    {
+      background: darken(#545453,10%);
+    }
+
+    > li:last-child > a 
+    {
+      border-bottom: none;
+    }
+
+     li.active
+    {
+       color : #545453;
+       a
+       {
+          background: white;
+          color: #545453;
+       }
+    }
+
+
+
+  }
+}
+
 .standup_view
 {
   padding: 10px;
   height:85%;
-  width: 99%;
+  
   position: fixed;
   background: white;
+  -webkit-box-shadow: -4px 4px 44px rgba(0, 0, 0, 0.41);
 }
 .standup_view .stories
 {
-  width: 100%;
+  
 }
 
 .standup_view > h2

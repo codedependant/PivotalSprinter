@@ -11,6 +11,7 @@
   %li.nav-search 
     %input.input(type="text")  
   {{#stories}}
-  %li(data-pk-story-id= "{{id}}")
-    %a{:href => "#"} {{name}}
+  %li(data-pk-story-id= "{{id}}" style="width: 100%;display:inline-table;border-bottom: solid 1px red;")
+    %div(style="display:table-cell;background:red;padding-left: 4px;")
+    %a(style="font-weight:bold;margin-left:2px;") {{name}}
   {{/stories}}
