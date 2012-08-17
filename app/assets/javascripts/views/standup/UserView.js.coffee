@@ -12,7 +12,7 @@ class Sprinter.Views.UserView extends Backbone.View
 
   render: () ->
     html = @template.render({stories:@collection.toJSON(),points:@collection.points()})
-    this.$el.hide().html(html).fadeIn(300)
+    this.$el.html(html)
     this
 
 

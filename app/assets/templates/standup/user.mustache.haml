@@ -3,9 +3,9 @@
   %h3 Total: {{points.total}}, Started: {{points.started}}, Unstarted: {{points.unstarted}}, Completed: {{points.completed}}
 
 
-  %ul.nav.nav-list.stories
+  %ul.nav.nav-list.story_list
     %li.nav-header Stories  
     {{#stories}}
-    %li(data-pk-story-id= "{{id}}")
+    %li(data-pk-story-id= "{{id}}" class="{{current_state}}")
       %a{:href => "#"} {{name}}
     {{/stories}}

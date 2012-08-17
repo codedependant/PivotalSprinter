@@ -1,11 +1,16 @@
 <%= flash[:error] %>
+<div class="row">
+  <div class="span6" style="margin-left:auto;margin-right:auto;float:none;background-color: rgba(0, 0, 0, 0.25);
+padding: 10px;
+border-radius: 4px;">
+    <form action="/sign_user_in">
 
-<form action="/sign_user_in">
-
-  <input type="text" placeholder="Username" name="username"/>
-  <input type="password" placeholder="Password" name="password"/>
-  <br>
-  <br>
-  <input type="text" placeholder="API Token" name="api_token"/>
-  <button href="">Sign In</button>
-</form>
+      <input type="text" placeholder="Username" name="username"/>
+      <input type="password" placeholder="Password" name="password"/>
+      <br>
+      <br>
+      <input type="text" placeholder="API Token" name="api_token"/>
+      <br><button class="btn btn-primary">Sign In</button>
+    </form>
+  </div>
+</div>

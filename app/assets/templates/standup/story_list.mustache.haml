@@ -9,9 +9,8 @@
 %ul.story_list.nav.nav-list
   %li.nav-header Stories  
   %li.nav-search 
-    %input.input(type="text")  
+    %input.input(type="text" placeholder="Search stories...")  
   {{#stories}}
-  %li(data-pk-story-id= "{{id}}" style="width: 100%;display:inline-table;border-bottom: solid 1px red;")
-    %div(style="display:table-cell;background:red;padding-left: 4px;")
-    %a(style="font-weight:bold;margin-left:2px;") {{name}}
+  %li(data-pk-story-id= "{{id}}" class="{{current_state}}")
+    %a {{name}}
   {{/stories}}
