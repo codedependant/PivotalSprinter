@@ -13,9 +13,18 @@ class Sprinter.Collections.Stories extends Backbone.Collection
 
   points: () ->
     @.reduce( (prev,cur) -> 
-      return_obj =
-        total : prev.total + cur.get("estimate")
-        started : if cur.get("current_state") == "started" then cur.get("estimate") else 0
-        unstarted : if cur.get("current_state") == "unstarted" then cur.get("estimate") else 0
-        completed : if cur.get("current_state") == "complete" then cur.get("estimate") else 0
-    ,{total:0,started:0,unstarted:0,complete:0})    
+      calcPoints= (prev,cur,state) ->
+        if cur.get("current_state") == state then cur.get("estimate") + prev[state] else prev[state]
+
+
+      if cur.get("estimate")
+        return_obj =
+          total : prev.total + cur.get("estimate")
+          started : calcPoints(prev,cur,"started")
+          unstarted : calcPoints(prev,cur,"unstarted")
+          accepted : calcPoints(prev,cur,"accepted")
+          finished : calcPoints(prev,cur,"finished")
+      else
+        prev
+
+    ,{total:0,started:0,unstarted:0,accepted:0,finished:0})    
