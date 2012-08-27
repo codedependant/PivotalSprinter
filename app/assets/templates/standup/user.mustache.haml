@@ -1,7 +1,12 @@
 .span12
   %h1 {{name}}
   %h3 Total: {{points.total}}, Started: {{points.started}}, Unstarted: {{points.unstarted}}, Completed: {{points.completed}}
-
+  
+  .progress
+    .bar.bar-danger(style="width: 45%;")
+    .bar.bar-warning(style="width: 20%;")
+    .bar.bar-success(style="width: 35%;")
+    
 
   %ul.nav.nav-list.story_list
     %li.nav-header Stories  

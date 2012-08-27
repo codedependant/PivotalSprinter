@@ -34,11 +34,18 @@ body {
 
 body
 {
-  background: #545453;
+		background-image: url(http://salleedesign.com/resources/mimi-glyphs/images/noise_cover.png);
+  background-color: #161616;
   color: white;
   font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
 }
+
+.progress
+{
+		height:10px;
+}
+
 h1, h2, h3
 {
   font-family: 'PT Sans Narrow', sans-serif;
@@ -101,17 +108,18 @@ ul.story_list
 
   .nav-list
   {
-    background: #545453;
     color: white;
 
     > li.nav-search input.input
     {
       border-radius: 16px;
-      background: @baseColor;
-      -webkit-box-shadow: 0px -4px 21px #3C3A3A inset;
-      color: white;      
-      border: 1px solid darken(@baseColor,10%);
       padding-left: 15px;
+						
+						background: #1A1A1A;
+						-webkit-box-shadow: 0px -4px 21px #0C0C0C inset;
+						color: white;
+						border: 1px solid #1F1F1F;
+
     }
     > li > a 
     {
@@ -146,17 +154,40 @@ ul.story_list
 
 .standup_view
 {
-  padding: 10px;
-  height:85%;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   color: #545453;
-  position: fixed;
   background: white;
   -webkit-box-shadow: -4px 4px 44px rgba(0, 0, 0, 0.41);
   border-radius: 4px;
-  border: 1px solid lightgrey;
+		display: none;
+		
+		.story_for
+		{
+				display: inline-block;
+				font-size: 21px;
+		}
+		
+		.story_by
+		{
+				font-size: 18px;
+				padding-left: 5px;
+				color: rgba(145, 145, 145, 1);
+				display: inline-block;
+		}
+		
+		
+		
+		
+}
+.standup_view.affix
+{
+		top:50px;
 }
 .standup_view .story_list
 {
+		
   > li > a 
   {
     border-bottom: 1px solid lightgray;
@@ -169,4 +200,6 @@ ul.story_list
   background-color: rgba(128, 127, 127, 0.06);
   margin-bottom: 10px;
 }
+
+
 

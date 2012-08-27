@@ -3,14 +3,18 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $(document).ready ->
   Sprinter.init()
+  $(".testrangeselector").selectRange 6, 15
+
+$.fn.selectRange = (start, end) ->
+  @each ->
+    if @setSelectionRange
+      @focus()
+      @setSelectionRange start, end
+    else if @createTextRange
+      range = @createTextRange()
+      range.collapse true
+      range.moveEnd "character", end
+      range.moveStart "character", start
+      range.select()
 
 
-
-  $(document).scroll ->
-    if($(this).scrollTop() > 100)
-      $(".story").css('top',60)
-      $(".story").css('position','fixed')
-      #$(".story").css('top',$(this).scrollTop()+40)
-    else
-      $(".story").css('top',100)
-      $(".story").css('position','relatve')

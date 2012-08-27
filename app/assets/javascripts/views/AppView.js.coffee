@@ -47,11 +47,14 @@ class Sprinter.Views.AppView extends Backbone.View
     id = $(event.currentTarget).data('pk-story-id')
     this.$(".story_list.nav-list li[data-pk-story-id=#{id}]").addClass("active").find("a").css("border-left-width",20)
     story = @collection.get(id)
+    console.log story.toJSON()
+    this.$(".standup_view").show()
     this.$(".standup_view").html(HoganTemplates['standup/story'].render(story.toJSON()))
 
 
   show_user: (event) =>
     event.preventDefault()
+    this.$(".standup_view").show()
     this.$('.story_list.nav-list li.nav-search input').val("")
 
 

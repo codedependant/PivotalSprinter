@@ -1,3 +1,4 @@
+%input.testrangeselector(value="some stuff i typed yo dsfsdfdsf")
 .navbar.navbar-fixed-top
   .navbar-inner
     .container-fluid
@@ -13,21 +14,30 @@
 
 .container-fluid
   .row-fluid
-    .span3
-      %h1.sprintNumber
-    .span3
-      %h1.sprintEnd
-    .span3
-      %h1.sprintPoints
-  %br
+    .span4
+      %h2.sprintNumber
+    .span8
+      %br/
+      %h4.sprintPoints.pull-right
+  
+  .row-fluid
+    .span12
+      .progress
+        .bar.bar-danger(style="width: 45%;")
+        .bar.bar-warning(style="width: 20%;")
+        .bar.bar-success(style="width: 20%;")
+        .bar.bar-info(style="width: 15%;")
+        
+        
+        
   .row-fluid
     .span4
       .sidebar-nav
         %img(src="http://www.mesothelioma.uk.com/editorimages/running.gif" style="width:100px;height:100px;")
 
     .span8
-      .standup_view.row-fluid
-        dfsdd
+      .row-fluid.standup_view.affix-top(data-spy="affix" data-offset-top="100")
+        %img(src="http://www.mesothelioma.uk.com/editorimages/running.gif" style="width:100px;height:100px;")
 
 
 
